@@ -1,0 +1,5 @@
+Zuerst wird der Adjustment listener definiert.
+Dieser wird danach der Scrollbar hinzugefügt.
+
+Im Listener gibt es die Methode "adjustmentValueChanged" welche ausgeführt wird, sobald der Wert der Scrollbar sich ändert, also sobald man scrollt.
+Der neue Wert, also wie weit man gescrollt ist, wird dann angezeigt.
