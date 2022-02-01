@@ -16,68 +16,42 @@ import javax.swing.*;
 * 
 **********************************************************/
 public class JavaPhoneGUI extends JFrame {
-  
-  // Hier die Schaltfächen (Buttons) deklarieren und gleich auch erzeugen.
-  // Sie sehen das Beispiel für die Taste [0]. Ergänzen Sie nun die 
-  // restlichen Tasten 1...9 sowie + und #.
-  // Vergessen Sie nicht die Schaltfläche für den Telefonhörer (hook)
-  JButton key1 = new JButton("1");
-  // ...
-  
-  //
-  // Deklarieren Sie hier die weiteren Elemente gemäss den Ausführungen
-  // in Quelle 2
-  JTextField display = new JTextField();
-  // ...
-    
-  // Deklarieren Sie hier alle benötigten Panels, so wie in Auftrag 1
-  // eingeführt.
-  JPanel keyPanel        = new JPanel();
-  JPanel keyDisplayPanel = new JPanel();
-  // ...
-    
-  // Der Konstruktor fügt alle Elemente zum GUI zusammen
+  private final JButton[] inputButtons = {new JButton("1"), new JButton("2"), new JButton("3"), new JButton("4"), new JButton("5"), new JButton("6"), new JButton("7"), new JButton("8"), new JButton("9"), new JButton("#"), new JButton("0"), new JButton("*")};
+    JButton hookButton = new JButton("Hook up");
+    JTextField display = new JTextField("");
+    JLabel status = new JLabel("ready");
+    JPanel keyPanel = new JPanel();
+    JPanel keyDisplayPanel = new JPanel();
+    JPanel hookPanel = new JPanel();
+
   JavaPhoneGUI() {
-    // Das Fenster (JFrame) initialisieren. Es werden diverse Eigenschaften
-    // festgelegt. Mehr dazu finden Sie in der API der Klasse JFrame.
+
     setTitle("JavaPhone");
     setBackground(Color.lightGray);
     setResizable(false);
-    // Hier die Komponenten wenn nötig noch parametrieren.
-    // Infos dazu finden Sie i nder API der jeweiligen Klasse
+
     display.setEditable(false);
-    
-    // Die Layout-Manager für das JFrame und die JPanel festlegen.
-    // Nähere Angaben dazu finden wich in Quelle 2
+
     getContentPane().setLayout(new BorderLayout(20, 20));
-    keyPanel.setLayout(new GridLayout(4, 3, 20, 20));
-    // ...
-    
-    
-    // Aufbau des keyPanel mit allen Tasten des Telefons
-    // Wenn SIe unsicher sind, was auf das keyPanel gehört, schauen Sie
-    // sich nochmals das Ergebnis von Auftrag 1 an.
-    keyPanel.add(key1);
-    // ...
-    // Und nun das displayPanel noch bestücken
-    //...
-    
-    // Die beiden Panels korrekt positioniert auf ein weiteres Panel
-    // keyDisplayPanel legen.
-    keyDisplayPanel.add(display, BorderLayout.NORTH);
-    keyDisplayPanel.add(keyPanel, BorderLayout.CENTER);
-    
-    // Verfahren Sie nun gleich wie oben gezeigt für den hook-Button und 
-    // das ready-Label.
-    // Studieren sie wenn nötig nochmals Quelle 2.
-    // ...
-    
-    // Fast fertig. Nun muss noch alles an der richtigen Position aufs
-    // Fenster gelegt werden.
+    keyPanel.setLayout(new GridLayout(0, 3, 20, 20));
+
+   for(JButton jb : inputButtons){
+     keyPanel.add(jb);
+   }
+
+
+      keyDisplayPanel.setLayout(new BorderLayout());
+      keyDisplayPanel.add(display, BorderLayout.NORTH);
+      keyDisplayPanel.add(keyPanel, BorderLayout.CENTER);
+      status.setForeground(Color.GREEN);
+      hookPanel.setLayout(new BorderLayout());
+      hookPanel.add(status,BorderLayout.NORTH);
+      hookPanel.add(hookButton,BorderLayout.CENTER);
+
+
     getContentPane().add(keyDisplayPanel, BorderLayout.CENTER);
-    //...
-    
-    // Und nun darf das Fenster angezeigt werden.
-    setVisible(true); 
+    getContentPane().add(hookPanel, BorderLayout.WEST);
+
+    setVisible(true);
   }
 }
