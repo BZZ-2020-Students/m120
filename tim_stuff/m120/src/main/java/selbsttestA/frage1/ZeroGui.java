@@ -1,4 +1,4 @@
-package selbsttestA;
+package selbsttestA.frage1;
 
 import javax.swing.*;
 import java.awt.*;
