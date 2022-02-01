@@ -2,6 +2,8 @@ package selbsttestA.frage3;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**********************************************************
  *
@@ -15,7 +17,6 @@ class TitleGUI extends JFrame {
     // GUI Elemente erzeugen
     JButton ok = new JButton("Ok");
     JTextField input = new JTextField();
-
 
     TitleGUI() {
         // Frame initialisieren
@@ -32,12 +33,18 @@ class TitleGUI extends JFrame {
         getContentPane().add(ok, BorderLayout.CENTER);
 
         // Listener registrieren
-        //...
+        ok.addActionListener(new OkListener());
 
         // Frame sichtbar machen
         setVisible(true);
     }
 
-    // Listener-Klasse f�r ActionEvent des Ok Buttons realisieren
-    //...
+    // Listener-Klasse für ActionEvent des Ok Buttons realisieren
+    class OkListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            // Titel aus Textfeld lesen
+            String title = input.getText();
+            setTitle(title);
+        }
+    }
 }
