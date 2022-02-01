@@ -20,7 +20,6 @@ import java.awt.event.ActionListener;
  *
  **********************************************************/
 public class JavaPhoneGUI extends JFrame {
-
     // Hier die Schaltflächen (Buttons) deklarieren und gleich auch erzeugen.
     // Sie sehen das Beispiel für die Taste [0]. Ergänzen Sie nun die
     // restlichen Tasten 1...9 sowie + und #.
@@ -38,20 +37,18 @@ public class JavaPhoneGUI extends JFrame {
     JButton keyA = new JButton("+");
     JButton keyB = new JButton("*");
     JButton hook = new JButton("Hook off");
-    // ...
-
-    //
     // Deklarieren Sie hier die weiteren Elemente gemäss den Ausführungen
     // in Quelle 2
     JTextField display = new JTextField();
     // ...
     JLabel state = new JLabel("ready");
-    // Deklarieren Sie hier alle ben�tigten Panels, so wie in Auftrag 1
+    // Deklarieren Sie hier alle benötigten Panels, so wie in Auftrag 1
     // eingeführt.
     JPanel keyPanel = new JPanel();
     JPanel keyDisplayPanel = new JPanel();
     // ...
     JPanel hookStatePanel = new JPanel();
+    private boolean connected = false;
 
     // Der Konstruktor fügt alle Elemente zum GUI zusammen
     JavaPhoneGUI() {
@@ -114,7 +111,18 @@ public class JavaPhoneGUI extends JFrame {
         // zugefügt werden
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         hook.addActionListener(new HookListener());
-        // ...
+        key1.addActionListener(new NumberKeyListener());
+        key2.addActionListener(new NumberKeyListener());
+        key3.addActionListener(new NumberKeyListener());
+        key4.addActionListener(new NumberKeyListener());
+        key5.addActionListener(new NumberKeyListener());
+        key6.addActionListener(new NumberKeyListener());
+        key7.addActionListener(new NumberKeyListener());
+        key8.addActionListener(new NumberKeyListener());
+        key9.addActionListener(new NumberKeyListener());
+        key0.addActionListener(new NumberKeyListener());
+        keyA.addActionListener(new NumberKeyListener());
+        keyB.addActionListener(new NumberKeyListener());
 
 
         // Und nun darf das Fenster angezeigt werden.
@@ -136,17 +144,31 @@ public class JavaPhoneGUI extends JFrame {
                 // Set state label to "connected")
                 hook.setText("Hook on");
                 state.setText("connected");
+                connected = true;
             } else {
                 // Set label of hook button to "Hook off"
+                hook.setText("Hook off");
                 // Set state label to "ready"
+                state.setText("ready");
                 // Delete number in display text field
-                // ...
+                display.setText("");
+
+                connected = false;
             }
         }
     }
 
     // Die Listener-Klasse für die key-Buttons
     // Für Details ist auf Quelle 4 verwiesen.
+    class NumberKeyListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (!connected) {
+                String ziffer = e.getActionCommand();
+                display.setText(display.getText() + ziffer);
+            }
+        }
+    }
 }
 
 
