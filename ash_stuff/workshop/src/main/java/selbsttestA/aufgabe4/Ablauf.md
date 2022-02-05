@@ -1,0 +1,6 @@
+#Ablauf ScrollListener
+
+---
+- Listener reagiert bei ein adjustment
+- Holt der Value vom Scrollbar
+- Aktualisiert das Label mit dem neuen Value
