@@ -62,7 +62,7 @@ public class testGUI extends JFrame {
                 img = ImageIO.read(new URL(url));
                 ImageIcon icon = new ImageIcon(img);
                 lbl.setIcon(icon);
-                imagePanel.add(lbl);
+                imagePanel.add(lbl, BorderLayout.CENTER);
                 pack();
                 repaint();
             } catch (IOException ex) {
@@ -87,7 +87,7 @@ public class testGUI extends JFrame {
     JPanel setTitlePanel = new JPanel(new BorderLayout(20, 20));
     JPanel counterPanel = new JPanel();
     JPanel setSizePanel = new JPanel(new BorderLayout(20,20));
-    JPanel imagePanel = new JPanel();
+    JPanel imagePanel = new JPanel(new BorderLayout());
     JPanel colorChoosePanel = new JPanel();
     JPanel ticTacToePanel = new JPanel(new BorderLayout());
 
@@ -115,6 +115,7 @@ public class testGUI extends JFrame {
     JLabel imageLabel = new JLabel("Online image url (no local path)");
     JTextField imageUrl = new JTextField(10);
     JButton submitUrl = new JButton("Submit Url");
+    JPanel inputPanel = new JPanel();
     BufferedImage img;
     JLabel lbl = new JLabel();
 
@@ -164,9 +165,10 @@ public class testGUI extends JFrame {
 
         //Image set
         submitUrl.addActionListener(new uploadImageListener());
-        imagePanel.add(imageLabel);
-        imagePanel.add(imageUrl);
-        imagePanel.add(submitUrl);
+        inputPanel.add(imageLabel);
+        inputPanel.add(imageUrl);
+        inputPanel.add(submitUrl);
+        imagePanel.add(inputPanel, BorderLayout.NORTH);
 
         //change color
         chooseColor.addActionListener(new changeBackgroundListener());
