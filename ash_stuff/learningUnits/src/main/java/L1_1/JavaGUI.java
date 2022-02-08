@@ -18,7 +18,7 @@ public class JavaGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        JavaGUI cb = new JavaGUI();
+        new JavaGUI();
     }
 
 }

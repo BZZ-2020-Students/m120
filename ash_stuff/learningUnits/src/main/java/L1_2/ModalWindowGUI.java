@@ -50,6 +50,7 @@ public class ModalWindowGUI extends JFrame{
        Bitte beachten, dass sich das Fenster gegen�ber dem Hauptfenster modal
        verh�lt. Modal? Sehen Sie in der Theorie nach.
     */
+    new ChildWindow(this);
     //do it
   }
   
