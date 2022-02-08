@@ -49,6 +49,7 @@ public class JavaPhoneGUI extends JFrame {
     // festgelegt. Mehr dazu finden Sie in der API der Klasse JFrame.
     setTitle("JavaPhone");
     setBackground(Color.lightGray);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     setResizable(false);
     // Hier die Komponenten wenn n�tig noch parametrieren.
     // Infos dazu finden Sie i nder API der jeweiligen Klasse
@@ -65,6 +66,7 @@ public class JavaPhoneGUI extends JFrame {
     // Wenn SIe unsicher sind, was auf das keyPanel geh�rt, schauen Sie
     // sich nochmals das Ergebnis von Auftrag 1 an.
     for (JButton key : keys) {
+      key.setBackground(Color.lightGray);
       keyPanel.add(key);
     }
     // ...
@@ -82,6 +84,7 @@ public class JavaPhoneGUI extends JFrame {
     // Studieren sie wenn n�tig nochmals Quelle 2.
     // ...
     stateLabel.setForeground(Color.GREEN);
+    hookKey.setBackground(Color.lightGray);
 
     hookPanel.setLayout(new BorderLayout());
     hookPanel.add(stateLabel, BorderLayout.NORTH);
