@@ -1,4 +1,4 @@
-import javax.swing.*;
+package aufgabe3;
 
 /**********************************************************
 *
@@ -14,7 +14,7 @@ class JavaPhoneMain {
   
   // Starts free-standing Java-Program
   public static void main(String[] args) {
-      // Create a new object of class JavaPhoneGUI
+      // Create a new object of class aufgabe3.JavaPhoneGUI
     JavaPhoneGUI gui = new JavaPhoneGUI();
     gui.setSize(300, 300);
   }
