@@ -31,11 +31,12 @@ public class LayoutTest extends JFrame {
         setVisible(true);
     }
 
-    private int c = 0;
-
     private String loc() {
         return LOCATIONS[getContentPane().getComponentCount()];
     }
+
+
+
     public static void main(String[] args) {
         new LayoutTest();
     }
