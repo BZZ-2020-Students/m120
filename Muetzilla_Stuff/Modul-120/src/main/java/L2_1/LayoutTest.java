@@ -37,6 +37,8 @@ public class LayoutTest extends JFrame {
         pack();
         setVisible(true);
     }
+
+    
     public void withGridlayout(){
         setLayout(new GridLayout(0,2));
         add(b1);
