@@ -63,6 +63,7 @@ public class testGUI extends JFrame {
                 ImageIcon icon = new ImageIcon(img);
                 lbl.setIcon(icon);
                 imagePanel.add(lbl);
+                pack();
                 repaint();
             } catch (IOException ex) {
                 ex.printStackTrace();
