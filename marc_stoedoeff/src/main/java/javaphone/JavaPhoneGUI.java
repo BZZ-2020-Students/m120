@@ -24,6 +24,7 @@ public class JavaPhoneGUI extends JFrame {
   // Sie sehen das Beispiel fuer die Taste [0]. Ergaenzen Sie nun die
   // restlichen Tasten 1...9 sowie + und #.
   // Vergessen Sie nicht die Schaltfl�che f�r den Telefonh�rer (hook)
+
   JButton[] keys = new JButton[12];
   // ...
   
