@@ -1,7 +1,5 @@
 package javaphone;
 
-import javax.swing.*;
-
 /**********************************************************
 *
 *  This class contains the main() method
