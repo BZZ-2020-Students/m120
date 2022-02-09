@@ -2,7 +2,6 @@ package L2_1;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.concurrent.Flow;
 
 public class LayoutTest extends JFrame {
     private JButton b1 =  new JButton("Press me");
@@ -38,7 +37,7 @@ public class LayoutTest extends JFrame {
         setVisible(true);
     }
 
-    
+
     public void withGridlayout(){
         setLayout(new GridLayout(0,2));
         add(b1);
