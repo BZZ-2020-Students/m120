@@ -10,33 +10,39 @@ import java.awt.event.*;
 import javax.swing.*;
 
 class TitleGUI extends JFrame {
-  
+
   // GUI Elemente erzeugen
-  JButton ok       = new JButton("Ok");
+  JButton ok = new JButton("Ok");
   JTextField input = new JTextField();
-    
-    
+
+
   TitleGUI() {
     // Frame initialisieren
     setTitle("Enter title");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(250, 100);
-    setResizable(false);
-    
+    setResizable(true);
+
     // Layouts setzen
     setLayout(new BorderLayout(20, 20));
-    
+
     // GUI zusammensetzen
     getContentPane().add(input, BorderLayout.NORTH);
     getContentPane().add(ok, BorderLayout.CENTER);
-    
+
     // Listener registrieren
-    //...
-    
+    ok.addActionListener(new OkListener());
+
     // Frame sichtbar machen
     setVisible(true);
   }
-    
+
   // Listener-Klasse f�r ActionEvent des Ok Buttons realisieren
-  //...
+  class OkListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      String title = input.getText();
+      setTitle(title);
+    }
+  }
 }
