@@ -71,12 +71,12 @@ public class JavaPhoneGUI extends JFrame {
 
 
     // Die beiden Panels korrekt positioniert auf ein weiteres Panel keyDisplayPanel legen.
-    keyDisplayPanel.setLayout(new BorderLayout());
+    keyDisplayPanel.setLayout(new BorderLayout(20,20));
     keyDisplayPanel.add(display, BorderLayout.NORTH);
     keyDisplayPanel.add(keyPanel, BorderLayout.CENTER);
 
     // Verfahren Sie nun gleich wie oben gezeigt für den hook-Button und das ready-Label.
-    keyhookStatePanel.setLayout(new BorderLayout());
+    keyhookStatePanel.setLayout(new BorderLayout(20,20));
     keyhookStatePanel.add(state, BorderLayout.NORTH);
     keyhookStatePanel.add(hook, BorderLayout.SOUTH);
 
