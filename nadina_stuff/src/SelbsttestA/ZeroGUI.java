@@ -34,7 +34,7 @@ class ZeroGUI extends JFrame {
     upperP.setLayout(new GridLayout(0,1));
     
     // Anzahl "Objekte"-> sind nebeneinander aufgelistet und gleich gross
-    underP.setLayout(new GridLayout(0, 3));
+    underP.setLayout(new GridLayout(1, 3));
 
     // GUI zusammensetzen
     // upper Panel

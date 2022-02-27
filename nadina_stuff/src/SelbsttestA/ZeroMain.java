@@ -6,9 +6,9 @@ package SelbsttestA;
  * @version 1.0  12-06-2000
  *
  **********************************************************/
-class TitleMain {
+class ZeroMain {
     public static void main(String[] args) {
-        // Create a new object of class TitleGUI
-        TitleGUI g = new TitleGUI();
+        ZeroGUI g = new ZeroGUI();
+        g.setSize(300, 100);
     }
 }
