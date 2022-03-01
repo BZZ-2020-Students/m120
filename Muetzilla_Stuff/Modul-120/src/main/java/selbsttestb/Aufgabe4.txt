@@ -1,0 +1,6 @@
+a)
+Der Text des Buttons ändert sich zu "Don't click me!"
+b)
+Der Text des Buttons ändert sich zu "Click me!"
+c)
+Die Aktion, welche in der Klasse "ClickMeListener" beschrieben wird.
