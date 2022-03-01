@@ -27,6 +27,17 @@ public class InputMask extends JFrame {
     private JPanel bottomCenterPanel = new JPanel();
     private JSeparator topSeparator = new JSeparator();
     private JSeparator bottomSeparator = new JSeparator();
+    private JTextField nameTextfield =  new JTextField();
+    private JTextField vornameTextfield =  new JTextField();
+    private JTextField strasseTextfield =  new JTextField();
+    private JTextField plzTextfield =  new JTextField();
+    private JTextField ortTextfield =  new JTextField();
+    private JTextField telTextfield =  new JTextField();
+    private JTextField mailTextfield =  new JTextField();
+    private JPanel emptyPanelLeft = new JPanel();
+    private JPanel emptyPanelRight = new JPanel();
+    private JPanel centerLeftPanel =  new JPanel();
+    private JPanel centerRightPanel =  new JPanel();
     public InputMask(){
         super("Beispiel zu GUI-Design");
 
@@ -43,6 +54,29 @@ public class InputMask extends JFrame {
         //Center Panel
         centerPanel.setLayout(new GridLayout(0,1));
         centerPanel.add(topSeparator);
+        topCenterPanel.setLayout(new BorderLayout());
+        centerLeftPanel.setLayout(new GridLayout(0,2));
+        centerLeftPanel.add(personTitleLabel);
+        centerLeftPanel.add(emptyPanelLeft);
+        centerLeftPanel.add(nameLabel);
+        centerLeftPanel.add(nameTextfield);
+        centerLeftPanel.add(vornameLabel);
+        centerLeftPanel.add(vornameTextfield);
+        centerLeftPanel.add(strasseLabel);
+        centerLeftPanel.add(strasseTextfield);
+        centerLeftPanel.add(plzLabel);
+        centerLeftPanel.add(plzTextfield);
+        centerLeftPanel.add(ortLabel);
+        centerLeftPanel.add(ortTextfield);
+        centerRightPanel.setLayout(new GridLayout(0,2));
+        centerRightPanel.add(kontakteTitleLabel);
+        centerRightPanel.add(emptyPanelRight);
+        centerRightPanel.add(telLabel);
+        centerRightPanel.add(telTextfield);
+        centerRightPanel.add(mailLabel);
+        centerRightPanel.add(mailTextfield);
+        centerPanel.add(centerLeftPanel, BorderLayout.WEST);
+        centerPanel.add(centerRightPanel, BorderLayout.EAST);
         centerPanel.add(topCenterPanel);
         centerPanel.add(bottomSeparator);
         centerPanel.add(bottomCenterPanel);
