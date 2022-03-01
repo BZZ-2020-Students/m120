@@ -52,6 +52,10 @@ public class InputMask extends JFrame {
     private JCheckBox bmsCheckBox = new JCheckBox();
     private JLabel bemerkungLabel = new JLabel("Bemerkung");
     private JTextArea bemerkungArea = new JTextArea(20, 50);
+    private JPanel textAreaPanel = new JPanel();
+    private JPanel bemerkungLabelPanel = new JPanel();
+
+
     public InputMask(){
         super("Beispiel zu GUI-Design");
 
@@ -95,6 +99,7 @@ public class InputMask extends JFrame {
         centerPanel.add(topCenterPanel);
         centerPanel.add(bottomSeparator);
         //Center Bottom Panel
+        bottomCenterPanel.setLayout(new BorderLayout());
         bottomTopPanel.setLayout(new BorderLayout());
         bottomTopInnerPanel.setLayout(new GridLayout(1,0));
         bottomTopInnerPanel.add(klasseLabel);
@@ -102,10 +107,10 @@ public class InputMask extends JFrame {
         bottomTopInnerPanel.add(bmsLabel);
         bottomTopInnerPanel.add(bmsCheckBox);
         bottomTopPanel.add(bottomTopInnerPanel, BorderLayout.WEST);
+        bottomTopPanel.add(bemerkungLabel, BorderLayout.SOUTH);
+        bottomBottomPanel.setLayout(new BorderLayout());
+        bottomBottomPanel.add(bemerkungArea, BorderLayout.CENTER);
         bottomCenterPanel.add(bottomTopPanel, BorderLayout.NORTH);
-        bottomBottomPanel.setLayout(new GridLayout(0,2));
-        bottomBottomPanel.add(bemerkungLabel);
-        bottomBottomPanel.add(bemerkungArea);
         bottomCenterPanel.add(bottomBottomPanel, BorderLayout.SOUTH);
         centerPanel.add(bottomCenterPanel);
 
