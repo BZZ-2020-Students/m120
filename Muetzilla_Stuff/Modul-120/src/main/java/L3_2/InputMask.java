@@ -1,7 +1,11 @@
 package L3_2;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class InputMask extends JFrame {
     private JLabel personTitleLabel =  new JLabel("Person:");
@@ -38,6 +42,16 @@ public class InputMask extends JFrame {
     private JPanel emptyPanelRight = new JPanel();
     private JPanel centerLeftPanel =  new JPanel();
     private JPanel centerRightPanel =  new JPanel();
+    private JPanel bottomTopPanel = new JPanel();
+    private JPanel bottomTopInnerPanel = new JPanel();
+    private JPanel bottomBottomPanel = new JPanel();
+    private JLabel klasseLabel =  new JLabel("Klasse");
+    private String[]klassen = new String[]{"IABM03 A"};
+    private JComboBox klassSelector = new JComboBox(klassen);
+    private JLabel bmsLabel = new JLabel("BMS");
+    private JCheckBox bmsCheckBox = new JCheckBox();
+    private JLabel bemerkungLabel = new JLabel("Bemerkung");
+    private JTextArea bemerkungArea = new JTextArea(20, 50);
     public InputMask(){
         super("Beispiel zu GUI-Design");
 
@@ -81,7 +95,18 @@ public class InputMask extends JFrame {
         centerPanel.add(topCenterPanel);
         centerPanel.add(bottomSeparator);
         //Center Bottom Panel
-
+        bottomTopPanel.setLayout(new BorderLayout());
+        bottomTopInnerPanel.setLayout(new GridLayout(1,0));
+        bottomTopInnerPanel.add(klasseLabel);
+        bottomTopInnerPanel.add(klassSelector);
+        bottomTopInnerPanel.add(bmsLabel);
+        bottomTopInnerPanel.add(bmsCheckBox);
+        bottomTopPanel.add(bottomTopInnerPanel, BorderLayout.WEST);
+        bottomCenterPanel.add(bottomTopPanel, BorderLayout.NORTH);
+        bottomBottomPanel.setLayout(new GridLayout(0,2));
+        bottomBottomPanel.add(bemerkungLabel);
+        bottomBottomPanel.add(bemerkungArea);
+        bottomCenterPanel.add(bottomBottomPanel, BorderLayout.SOUTH);
         centerPanel.add(bottomCenterPanel);
 
 
