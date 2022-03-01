@@ -54,7 +54,8 @@ public class InputMask extends JFrame {
         //Center Panel
         centerPanel.setLayout(new GridLayout(0,1));
         centerPanel.add(topSeparator);
-        topCenterPanel.setLayout(new BorderLayout());
+        //Center Top Panel
+        topCenterPanel.setLayout(new GridLayout(0,2));
         centerLeftPanel.setLayout(new GridLayout(0,2));
         centerLeftPanel.add(personTitleLabel);
         centerLeftPanel.add(emptyPanelLeft);
@@ -75,10 +76,12 @@ public class InputMask extends JFrame {
         centerRightPanel.add(telTextfield);
         centerRightPanel.add(mailLabel);
         centerRightPanel.add(mailTextfield);
-        centerPanel.add(centerLeftPanel, BorderLayout.WEST);
-        centerPanel.add(centerRightPanel, BorderLayout.EAST);
+        topCenterPanel.add(centerLeftPanel);
+        topCenterPanel.add(centerRightPanel);
         centerPanel.add(topCenterPanel);
         centerPanel.add(bottomSeparator);
+        //Center Bottom Panel
+
         centerPanel.add(bottomCenterPanel);
 
 
@@ -98,6 +101,6 @@ public class InputMask extends JFrame {
 
     public static void main(String[] args) {
       InputMask im = new InputMask();
-      im.setSize(400,300);
+      im.setSize(500,400);
     }
 }
