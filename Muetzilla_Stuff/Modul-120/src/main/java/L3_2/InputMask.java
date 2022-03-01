@@ -23,6 +23,10 @@ public class InputMask extends JFrame {
     private JButton verwerfenButton =  new JButton("Verwerfen");
     private JButton schliessenButton =  new JButton("Schliessen");
     private JPanel centerPanel = new JPanel();
+    private JPanel topCenterPanel = new JPanel();
+    private JPanel bottomCenterPanel = new JPanel();
+    private JSeparator topSeparator = new JSeparator();
+    private JSeparator bottomSeparator = new JSeparator();
     public InputMask(){
         super("Beispiel zu GUI-Design");
 
@@ -38,7 +42,10 @@ public class InputMask extends JFrame {
         titlePanel.add(imageLabel, BorderLayout.EAST);
         //Center Panel
         centerPanel.setLayout(new GridLayout(0,1));
-
+        centerPanel.add(topSeparator);
+        centerPanel.add(topCenterPanel);
+        centerPanel.add(bottomSeparator);
+        centerPanel.add(bottomCenterPanel);
 
 
         //Button Panel
