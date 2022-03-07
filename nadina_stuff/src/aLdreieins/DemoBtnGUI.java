@@ -6,11 +6,11 @@ import java.awt.*;
 public class DemoBtnGUI extends JFrame {
 
     JButton speichern = new JButton("Speichern");
-
     JPanel jp = new JPanel();
 
     public DemoBtnGUI(){
-        setTitle("Demo");
+        setTitle("Demo"); // super("Demo");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.lightGray);
 
         getContentPane().setLayout(new BorderLayout());
