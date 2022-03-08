@@ -37,7 +37,8 @@ public class M3_1Demo extends JFrame {
             // MID Panel mit Textarea und Liste
             aTextArea = new JTextArea(5, 20);
             aList     = new JList<String>(data);
-            getContentPane().add(aTextArea, BorderLayout.CENTER);
+            JScrollPane scrollPane = new JScrollPane(aTextArea);
+            getContentPane().add(scrollPane, BorderLayout.CENTER);
             getContentPane().add(aList, BorderLayout.EAST);
             // BOTTOM Panel mit 2 Schaltflächen
             JPanel bottomPanel = new JPanel(new BorderLayout(20, 20));
@@ -80,6 +81,26 @@ public class M3_1Demo extends JFrame {
                 }
                 public void mouseExited(MouseEvent e){
                     buttonTwo.setBackground(Color.LIGHT_GRAY);
+                }
+            });
+            aTextField.addKeyListener(new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+
+                }
+
+                @Override
+                public void keyPressed(KeyEvent e) {
+
+                }
+
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        aTextField.setText(aTextField.getText() + "\n");
+                        aTextField.setText("");
+                    }
+                    System.out.println(e.getSource());
                 }
             });
     }
