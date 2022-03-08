@@ -1,4 +1,4 @@
-package M2_1;
+package M3_1;
 
 import M1_1.ListenerDemo;
 import M1_1.NewListener;
@@ -7,12 +7,9 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 
-public class SematischeListener extends JFrame {
+public class LowLevelListener extends JFrame {
 
     /**
      *
@@ -25,7 +22,7 @@ public class SematischeListener extends JFrame {
     private String[]  listdata = {"1", "2", "3", "4"};
 
 
-    public SematischeListener(){
+    public LowLevelListener(){
         super("Beispiele für Sematische Listner");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //
@@ -40,7 +37,7 @@ public class SematischeListener extends JFrame {
         JPanel upperpanel = new JPanel(new BorderLayout());
         this.getContentPane().setLayout(new BorderLayout());
         lbutton   = new JButton("toggle color");
-        rbutton   = new JButton("RButton");
+        rbutton   = new JButton("mouse over color");
         txtfield = new JTextField();
         label = new JLabel("label");
         list = new JList<String>(listdata);
@@ -56,6 +53,26 @@ public class SematischeListener extends JFrame {
 //                    System.out.println("change to green");
                 }
 
+            }
+        });
+
+        rbutton.setBackground(Color.LIGHT_GRAY);
+        rbutton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e){
+                rbutton.setBackground(Color.WHITE);
+            }
+            public void mouseExited(MouseEvent e){
+                rbutton.setBackground(Color.LIGHT_GRAY);
+            }
+        });
+
+        txtfield.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                    txtarea.append(txtfield.getText()+"\n");
+                    txtfield.setText("");
+                }
             }
         });
 
@@ -77,6 +94,8 @@ public class SematischeListener extends JFrame {
             }
         });
 
+        JScrollPane txtareascrollpn = new JScrollPane(txtarea);
+
         btnPanel.add(lbutton,BorderLayout.WEST);
         btnPanel.add(rbutton,BorderLayout.EAST);
 
@@ -85,11 +104,11 @@ public class SematischeListener extends JFrame {
 
         this.getContentPane().add(btnPanel,BorderLayout.SOUTH);
         this.getContentPane().add(upperpanel,BorderLayout.NORTH);
-        this.getContentPane().add(txtarea,BorderLayout.CENTER);
+        this.getContentPane().add(txtareascrollpn,BorderLayout.CENTER);
         this.getContentPane().add(list,BorderLayout.EAST);
     }
 
     public static void main(String[] args) {
-        new SematischeListener();
+        new LowLevelListener();
     }
 }
