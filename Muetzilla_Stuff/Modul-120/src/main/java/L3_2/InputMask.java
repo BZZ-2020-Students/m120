@@ -131,6 +131,6 @@ public class InputMask extends JFrame {
 
     public static void main(String[] args) {
       InputMask im = new InputMask();
-      im.setSize(500,400);
+      im.setSize(600,500);
     }
 }
