@@ -58,7 +58,7 @@ public class ListenerDemo extends JFrame{
 		btnThree.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(btnThree.getText());
+				System.out.println(actionBtnThree);
 			}
 		});
 		
