@@ -1,0 +1,1 @@
+Es wird geschaut, ob eine Eingabe des Users auf der Scrollbar kommt. Wenn der User eine Eingabe macht, sucht sich Java das Element, welcher diesem Listener zugeordnet ist und führt so schliesslich die Aktionen aus, welche dafür festgelegt wurden.

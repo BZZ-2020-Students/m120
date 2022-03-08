@@ -44,7 +44,7 @@ public class JavaPhoneGUI extends JFrame {
 
     
   // Der Konstruktor fügt alle Elemente zum GUI zusammen
-  JavaPhoneGUI() {
+  public JavaPhoneGUI() {
     setTitle("JavaPhone"); // Titel
     setBackground(Color.lightGray);
     setResizable(false);
