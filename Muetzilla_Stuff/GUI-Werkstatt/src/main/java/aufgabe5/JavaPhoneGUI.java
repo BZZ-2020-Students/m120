@@ -24,18 +24,8 @@ public class JavaPhoneGUI extends JFrame{
   // Sie sehen das Beispiel f�r die Taste [0]. Erg�nzen Sie nun die 
   // restlichen Tasten 1...9 sowie + und #.
   // Vergessen Sie nicht die Schaltfl�che f�r den Telefonh�rer (hook)
-  JButton key1 = new JButton("1");
-  JButton key2 = new JButton("2");
-  JButton key3 = new JButton("3");
-  JButton key4 = new JButton("4");
-  JButton key5 = new JButton("5");
-  JButton key6 = new JButton("6");
-  JButton key7 = new JButton("7");
-  JButton key8 = new JButton("8");
-  JButton key9 = new JButton("9");
-  JButton key0 = new JButton("0");
-  JButton keyA = new JButton("+");
-  JButton keyB = new JButton("*");
+  JButton[] keys = new JButton[12];
+
   JButton hook = new JButton("Hook off");
   // ...
   
@@ -62,63 +52,65 @@ public class JavaPhoneGUI extends JFrame{
     // Hier die Komponenten wenn n�tig noch parametrieren.
     // Infos dazu finden Sie i nder API der jeweiligen Klasse
     display.setEditable(false);
-    
+
     // Die Layout-Manager f�r das JFrame und die JPanel festlegen.
     // N�here Angaben dazu finden wich in Quelle 2
     getContentPane().setLayout(new BorderLayout(20, 20));
     keyPanel.setLayout(new GridLayout(4, 3, 20, 20));
     // ...
     keyDisplayPanel.setLayout(new BorderLayout(20, 20));
-    hookStatePanel.setLayout(new BorderLayout(20,20));
-    
+    hookStatePanel.setLayout(new BorderLayout(20, 20));
+
     // Aufbau des keyPanel mit allen Tasten des Telefons
     // Wenn SIe unsicher sind, was auf das keyPanel geh�rt, schauen Sie
     // sich nochmals das Ergebnis von Auftrag 1 an.
-    keyPanel.add(key1);
-    // ...
-    keyPanel.add(key2);
-    keyPanel.add(key3);
-    keyPanel.add(key4);
-    keyPanel.add(key5);
-    keyPanel.add(key6);
-    keyPanel.add(key7);
-    keyPanel.add(key8);
-    keyPanel.add(key9);
-    keyPanel.add(keyA);
-    keyPanel.add(key0);
-    keyPanel.add(keyB);
-    
-    // Und nun das displayPanel noch best�cken
-    //...
-    
-    // Die beiden Panels korrekt positioniert auf ein weiteres Panel
-    // keyDisplayPanel legen.
-    keyDisplayPanel.add(display, BorderLayout.NORTH);
-    keyDisplayPanel.add(keyPanel, BorderLayout.CENTER);
-    
-    // Verfahren Sie nun gleich wie oben gezeigt f�r den hook-Button und 
-    // das ready-Label.
-    // Studieren sie wenn n�tig nochmals Quelle 2.
-    // ...
-    hookStatePanel.add(state, BorderLayout.NORTH);
-    hookStatePanel.add(hook, BorderLayout.CENTER);
-    
-    // Fast fertig. Nun muss noch alles an der richtigen Position aufs
-    // Fenster gelegt werden.
-    getContentPane().add(keyDisplayPanel, BorderLayout.CENTER);
-    //...
-    getContentPane().add(hookStatePanel, BorderLayout.WEST);
-    
-    
-    // Nachdem das GUI zusammengestellt ist, m�ssen nun noch die Listener
-    // zugef�gt werden
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    hook.addActionListener(new HookListener());
-    // ...
-    
-  
-    // Und nun darf das Fenster angezeigt werden.
-    setVisible(true); 
+    for (int i = 0; i < keys.length; i++) {
+      if (i == 9)
+        keys[i] = new JButton("*");
+      else if (i == 10)
+        keys[i] = new JButton("0");
+      else if (i == 11)
+        keys[i] = new JButton("#");
+      else
+        keys[i] = new JButton("" + (i + 1));
+
+      int finalI = i;
+      keys[i].addActionListener(e -> display.setText(display.getText() + keys[finalI].getText()));
+
+      keyPanel.add(keys[i]);
+
+      // Und nun das displayPanel noch best�cken
+      //...
+
+      // Die beiden Panels korrekt positioniert auf ein weiteres Panel
+      // keyDisplayPanel legen.
+      keyDisplayPanel.add(display, BorderLayout.NORTH);
+      keyDisplayPanel.add(keyPanel, BorderLayout.CENTER);
+
+      // Verfahren Sie nun gleich wie oben gezeigt f�r den hook-Button und
+      // das ready-Label.
+      // Studieren sie wenn n�tig nochmals Quelle 2.
+      // ...
+      hookStatePanel.add(state, BorderLayout.NORTH);
+      hookStatePanel.add(hook, BorderLayout.CENTER);
+
+      // Fast fertig. Nun muss noch alles an der richtigen Position aufs
+      // Fenster gelegt werden.
+      getContentPane().add(keyDisplayPanel, BorderLayout.CENTER);
+      //...
+      getContentPane().add(hookStatePanel, BorderLayout.WEST);
+
+
+      // Nachdem das GUI zusammengestellt ist, m�ssen nun noch die Listener
+      // zugef�gt werden
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      hook.addActionListener(new HookListener());
+      // ...
+
+
+      // Und nun darf das Fenster angezeigt werden.
+      setVisible(true);
+    }
   }
 
   /* Die Listener-Klassen werden als innere Klassen deklariert.
@@ -127,26 +119,21 @@ public class JavaPhoneGUI extends JFrame{
   */
     // Die Listener-Klasse f�r den Hoook-Button
       class HookListener implements ActionListener {
-      // Die Methode wird aufgerufen, wenn der Hook-Button geklickt wird.
         public void actionPerformed(ActionEvent e) {
-        // �ndere den Text des Labels beim Hook-Button
         if (e.getActionCommand().equals("Hook off")) {
-        // Set label of hook button to "Hook on"
-      // Set state label to "connected")
         hook.setText("Hook on");
         state.setText("connected");
+        state.setForeground(Color.green);
         } else {
-        // Set label of hook button to "Hook off"
-      // Set state label to "ready"
-    // Delete number in display text field
-  // ...
+          hook.setText("Hook off");
+          state.setText("ready");
+          display.setText("");
+          state.setForeground(Color.black);
+        }
+
       }
     }
   }
-
-  // Die Listener-Klasse f�r die key-Buttons
-  // F�r Detilas ist auf Quelle 4 verwiesen.
-}
 
 
 
