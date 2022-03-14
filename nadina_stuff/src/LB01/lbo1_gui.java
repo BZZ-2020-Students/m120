@@ -15,10 +15,10 @@ public class lbo1_gui extends JFrame {
 
     JButton jb = new JButton("GO");
 
-    public lbo1_gui(){
+    public lbo1_gui() {
         setTitle("Test zu Gui-Werkstatt");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(300,110);
+        setSize(300, 110);
 
         // Layout
         setLayout(new BorderLayout());
@@ -45,11 +45,13 @@ public class lbo1_gui extends JFrame {
         jr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(jr.equals(false)){
+                if (jr.equals(false)) {
                     jtx.setVisible(false);
-                }else{
+                } else {
                     jtx.setVisible(true);
                 }
+
+                // richtig: jtx.setVisible(jr.isSelected());
             }
         });
     }
