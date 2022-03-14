@@ -1,0 +1,5 @@
+Aufgabe 4
+
+a.) Beim überhoveren ändert sich der Text auf "Don't click me!"
+b.) Beim verlassen ändert sich der Text auf "Click me!"
+c.) Der Button wird getdrück der Text bleibt aber bei "Don't click me!"
