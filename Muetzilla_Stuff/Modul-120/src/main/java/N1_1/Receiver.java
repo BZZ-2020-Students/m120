@@ -6,12 +6,14 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Receiver extends JFrame implements Observer {
+    public static int recNumber = 1;
     private JTextArea receiverArea;
     private JButton subscribeButton;
     private JButton unsubscribeButton;
 
     public Receiver(Transmitter trans) {
-        super("Empfaenger 1");
+        super("Empfaenger " + recNumber);
+        recNumber++;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -22,6 +24,7 @@ public class Receiver extends JFrame implements Observer {
 
         subscribeButton = new JButton("Anmelden");
         unsubscribeButton = new JButton("Abmelden");
+        unsubscribeButton.setEnabled(false);
         subscribeButton.addActionListener(e -> {
             trans.addObserver(this);
             subscribeButton.setEnabled(false);
@@ -58,8 +61,4 @@ public class Receiver extends JFrame implements Observer {
         receiverArea.append("\n" + message);
     }
 
-    public static void main(String[] args) {
-        Transmitter transmitter = new Transmitter();
-        Receiver receiver = new Receiver(transmitter);
-    }
 }

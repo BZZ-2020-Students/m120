@@ -43,4 +43,11 @@ public class Transmitter extends Observable{
         notifyObservers(message);
         theMessage.setText("");
     }
+
+    public static void main(String[] args) {
+        Transmitter t1 = new Transmitter();
+
+        Receiver r1 = new Receiver(t1);
+        Receiver r2 = new Receiver(t1);
+    }
 }
