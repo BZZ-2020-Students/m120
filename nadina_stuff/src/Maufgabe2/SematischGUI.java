@@ -1,10 +1,10 @@
 package Maufgabe2;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 
 import static java.awt.Color.cyan;
 
@@ -19,7 +19,6 @@ public class SematischGUI extends JFrame {
 
     TextArea jta = new TextArea();
 
-    JList jli = new JList<>();
 
     JPanel southp = new JPanel();
     JPanel northp = new JPanel();
@@ -33,6 +32,8 @@ public class SematischGUI extends JFrame {
         // Layout
         setLayout(new BorderLayout());
 
+        String[] data = {"one", "two", "three", "four"};
+        JList<String> jli = new JList<String>(data);
 
         // Panel
         southp.setLayout(new BorderLayout());
@@ -58,8 +59,26 @@ public class SematischGUI extends JFrame {
         });
 
         // JTextField FocusListener
+        jta.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                System.out.println(jta.getText());
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                System.out.println(jta.getText());
+            }
+
+        });
 
         // JListSelectionListener
+        jli.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
 
         getContentPane().add(southp, BorderLayout.SOUTH);
         getContentPane().add(northp, BorderLayout.NORTH);
@@ -70,7 +89,9 @@ public class SematischGUI extends JFrame {
         setVisible(true);
     }
 
+
     public static void main(String[] args) {
         SematischGUI sgui = new SematischGUI();
+
     }
 }
