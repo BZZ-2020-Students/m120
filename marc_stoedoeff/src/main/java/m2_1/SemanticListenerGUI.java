@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import static java.awt.Color.CYAN;
+import static java.awt.Color.green;
+
 public class SemanticListenerGUI extends JFrame {
     public SemanticListenerGUI() {
         initComponents();
@@ -62,7 +65,7 @@ public class SemanticListenerGUI extends JFrame {
         bottomPanel.setLayout(new BorderLayout());
         var bottomLeftButton = new JButton("toggle color");
         bottomLeftButton.addActionListener(e ->
-                bottomLeftButton.setBackground(bottomLeftButton.getBackground() == Color.CYAN ? Color.green : Color.CYAN)
+                bottomLeftButton.setBackground(bottomLeftButton.getBackground() == CYAN ? green : CYAN)
         );
 
         var bottomRightButton = new JButton();
