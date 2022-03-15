@@ -19,27 +19,15 @@ public class Werkstatt extends JFrame {
         setLayout(new BorderLayout());
         setTitle("Test zu GUI-Werkstatts");
 
-        upload.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!upload.isSelected()){
-                    text.setVisible(false);
-                }else {
-                    text.setVisible(true);
-                }
-            }
-        });
+        upload.addActionListener(e -> text.setVisible(upload.isSelected()));
 
         add(upload, BorderLayout.NORTH);
         add(verzeichnis, BorderLayout.WEST);
         add(text, BorderLayout.EAST);
 
-        go.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(text.getText());
-                text.setText("");
-            }
+        go.addActionListener(e -> {
+            System.out.println(text.getText());
+            text.setText("");
         });
         add(go, BorderLayout.SOUTH);
 
