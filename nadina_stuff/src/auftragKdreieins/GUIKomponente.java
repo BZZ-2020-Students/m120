@@ -8,7 +8,7 @@ import java.awt.*;
  * @author Nadina Amsler (shirin197)
  * @date 20.03.2022
  * @beschreibung : Klasse welche sich mit dem JTable beschäftigt.
- *                 kleines Beispiel mit
+ *                 kleines Beispiel 
  * */
 
 
