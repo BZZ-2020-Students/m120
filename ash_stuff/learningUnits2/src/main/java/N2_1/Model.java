@@ -58,5 +58,7 @@ public class Model extends DefaultListModel<String> {
     public void addElement(String value) {
         // do it
         data.add(value);
+        Collections.sort(data);
+        fireIntervalAdded(this, data.size(), data.size());
     }
 }
