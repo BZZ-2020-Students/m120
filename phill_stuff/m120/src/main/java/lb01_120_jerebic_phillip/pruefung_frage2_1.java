@@ -5,13 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class pruefung_frage2 extends JFrame {
+public class pruefung_frage2_1 extends JFrame {
 
     private JButton enterbutton, abortbutton;
     private JTextField textfield;
     private JPanel buttonpanel;
 
-    public pruefung_frage2() {
+    public pruefung_frage2_1() {
         super("Test z...");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //
@@ -54,7 +54,7 @@ public class pruefung_frage2 extends JFrame {
     }
 
     public static void main(String[] args) {
-        new pruefung_frage2();
+        new pruefung_frage2_1();
     }
 }
 

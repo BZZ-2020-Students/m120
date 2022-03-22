@@ -54,7 +54,7 @@ public class pruefung_frage2 extends JFrame {
     }
 
     public static void main(String[] args) {
-        new pruefung_frage2();
+        new pruefung_frage2_1();
     }
 }
 
