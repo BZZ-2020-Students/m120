@@ -35,7 +35,7 @@ public class Receiver extends JFrame implements Observer{// ab hier implementier
     private JPanel panel = new JPanel(new BorderLayout());
     private JPanel grid = new JPanel(new GridLayout(1,2));
 
-    public Receiver(Transmitter trans) {
+    public Receiver(Observable trans) {
         setTitle("Empfänger");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 400);
