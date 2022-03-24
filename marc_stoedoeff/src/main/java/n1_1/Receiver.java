@@ -29,9 +29,9 @@ import java.util.Observer;
  */
 
 public class Receiver extends JFrame implements Observer {
-    private Label receiverLabel;
-    private JButton subscribeButton;
-    private JButton unsubscribeButton;
+    private final Label receiverLabel;
+    private final JButton subscribeButton;
+    private final JButton unsubscribeButton;
 
     public Receiver(Transmitter trans) {
         super("Empfänger");
