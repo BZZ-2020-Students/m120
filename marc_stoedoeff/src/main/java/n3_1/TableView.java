@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+import static java.awt.event.KeyEvent.VK_ENTER;
+
 /**
  * Die Klasse TableView bringt die Daten des Modells DataModel zur Anzeige. 
  * Die Daten werden �ber das MVC-Pattern von der Model-Klasse gelesen.
@@ -48,7 +50,7 @@ public class TableView extends JFrame {
       @Override
       public void keyPressed(KeyEvent e) {
         // TODO Auto-generated method stub
-        if (e.getKeyCode() == KeyEvent.VK_ENTER){
+        if (e.getKeyCode() == VK_ENTER){
           System.out.println("neuer Wert in Spalte"+table.getEditingColumn()+" und Zeile"+table.getEditingRow());
           System.out.println("Wert = "+ table.getValueAt(table.getEditingRow(), table.getEditingColumn()));
           //
@@ -57,9 +59,10 @@ public class TableView extends JFrame {
       }
     } );
     table.setDefaultEditor(Object.class, new DefaultCellEditor(cellEditor));
+
+    UIManager.getLookAndFeelDefaults().put("Table.alternateRowColor", new Color(144, 144, 144));
   }
-  
-  
+
   public static void main(String[] args){
     var list = new ArrayList<Engine>();
     list.add(new Engine("GM", 5.3f, 450));
