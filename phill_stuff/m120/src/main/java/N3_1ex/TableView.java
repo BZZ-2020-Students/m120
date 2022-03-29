@@ -1,13 +1,11 @@
-package N3_1;
+package N3_1ex;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.table.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Vector;
 
 /**
  * Die Klasse TableView bringt die Daten des Modells DataModel zur Anzeige. 
@@ -22,9 +20,9 @@ public class TableView extends JFrame {
   private JTextField cellEditor;
   private JTable table;
   private TableModel model;
-  private JButton newBtn;
+  private JButton addRow;
 
-  
+
   public TableView(TableModel m){
     super("Autoliste");
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,14 +36,18 @@ public class TableView extends JFrame {
   
   private void init(){
     // Tabelle erstellen und in Contentpane ablegen
-
     table = new JTable(model);
-    add(table);
-    newBtn = new JButton("Add");
-    newBtn.addActionListener((e) -> new InputDialog(model));
-
-    add(newBtn,BorderLayout.SOUTH);
-
+    JScrollPane scroller = new JScrollPane(table);
+    this.getContentPane().add(scroller,BorderLayout.CENTER);
+    
+    //
+    // Als editierbares Objekt für die Zelle wird eine JTextField-Komponente festgelegt = es können nur String verarbeitete werden.
+    // Dieser Komponente wird dann ein KeyListener angehängt, der die Eingabe der ENTER-Taste abfängt.
+    // Danach wird aus der Editor-Komponente (und NICHT der Tabellenzelle!!) der neu eingegebene Wert gelesen und dem 
+    // Datenmodel zugwiesen.
+    // Hinweis: in der Tabellen-Zelle steht noch immer der alte Wert.
+    
+    /*-- Code wenn der Benutzer die Eingabe selber kontrollieren will
     cellEditor = new JTextField();
     cellEditor.addKeyListener(new KeyAdapter(){
       @Override
@@ -60,17 +62,50 @@ public class TableView extends JFrame {
       }
     } );
     table.setDefaultEditor(Object.class, new DefaultCellEditor(cellEditor));
-    setVisible(true);
-    table.setDefaultEditor(Object.class, new DefaultCellEditor(cellEditor));
+    --*/
+    
+    // Schaltfläche
+    addRow = new JButton("Zeile hinzufügen");
+    Panel bottomPanel = new Panel(new BorderLayout());
+    bottomPanel.add(addRow,BorderLayout.EAST);
+    this.getContentPane().add(bottomPanel,BorderLayout.SOUTH);
+
+    addRow.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        InputDialog input = new InputDialog(model);
+      }
+    });
+
+
+    this.addWindowListener(new WindowAdapter()
+    {
+      public void windowClosing(WindowEvent e)
+      {
+        FileStorage objectIO = new FileStorage();
+        objectIO.writeObjectToFile(model);
+      }
+    });
+
+    
   }
+
   
   
   public static void main(String[] args){
-    var list = new Vector<DataClass>();
-    list.add(new DataClass("GM", 5.3f, 450));
-    list.add(new DataClass("Toyota", 3.0f, 300));
-    var model = new DataModel(list);
-    new TableView(model);
+    // Objekte erstellen
+
+    // Check if Object is existent
+    FileStorage objectIO = new FileStorage();
+    Object read = objectIO.readObjectFromFile();
+    DataModel model;
+    if(read == null){
+      model = new DataModel();
+    }else{
+      model = (DataModel) read;
+    }
+
+    TableView view = new TableView(model);
   }
   
 }
@@ -80,7 +115,7 @@ class InputDialog extends JDialog{
   private JTextField[] eingabeFelder;
   private JButton okBtn, abortBtn;
   private JDialog dialog;
-  
+
   InputDialog(TableModel model){
     this.dialog = this;
     this.setTitle("Autoliste erfassen");
@@ -98,12 +133,20 @@ class InputDialog extends JDialog{
     this.getContentPane().add(inputPanel, BorderLayout.CENTER);
     //
     okBtn = new JButton("OK");
-    okBtn.addActionListener(e -> {
-      var dataClass = new DataClass();
-      dataClass.setHersteller(eingabeFelder[0].getText());
-      dataClass.setHubraum(Float.parseFloat(eingabeFelder[1].getText()));
-      dataClass.setLeistung(Integer.parseInt(eingabeFelder[2].getText()));
-//      model.addRow(dataClass);
+    okBtn.addActionListener(new ActionListener(){
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        /**
+           ein neues Objekt der Model-Klasse zufügen.Dazu die add-Methode implementieren.
+           ACHTUNG: die Referenz model ist vom Type TableModel und kennt daher die
+           Methdei add() nicht. Die Referenz muss zuerst in den entsprechenden Typ
+           umgewandelt werden (cast)
+        **/
+        ((DataModel)model).addRow(new DataClass(eingabeFelder[0].getText(),
+                                                new Float(eingabeFelder[1].getText()).floatValue(),
+                                                new Integer(eingabeFelder[2].getText()).intValue()));
+      }
     });
     
     abortBtn = new JButton("Abbrechen");

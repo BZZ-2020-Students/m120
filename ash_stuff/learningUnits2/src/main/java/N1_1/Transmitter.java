@@ -58,11 +58,11 @@ public class Transmitter extends Observable{
   }
   
   private void doSend(){
-    // hier implementieren ie bitte die Methoden f�r
-    // den Observer.
-    // Mehr dazu in der API.
+    this.setChanged();
+    this.notifyObservers(theMessage.getText());
+    theMessage.setText("");
   }
-  
+
   
   /**
   * die main-Methode erzeugt ein Transmitter-Objekt und
@@ -72,6 +72,8 @@ public class Transmitter extends Observable{
   */
   public static void main(String[] args){
     Transmitter tx = new Transmitter();
+    Receiver rx1 = new Receiver(tx);
+    Receiver rx2 = new Receiver(tx);
     //
     // hier folgen die Empf�nger-Objekte
   }
