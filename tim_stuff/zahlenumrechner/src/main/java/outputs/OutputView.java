@@ -2,6 +2,7 @@ package outputs;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
 import java.util.Observer;
 
 public abstract class OutputView extends JFrame implements Observer {
@@ -11,7 +12,7 @@ public abstract class OutputView extends JFrame implements Observer {
     private final int xDelta = 100;
     private final int yDelta = 75;
 
-    public OutputView() throws HeadlessException {
+    public OutputView(Observable observable) throws HeadlessException {
         init();
     }
 
@@ -23,5 +24,7 @@ public abstract class OutputView extends JFrame implements Observer {
         setTitle("Output");
         outValue = new JLabel("Output");
         add(outValue);
+
+        setVisible(true);
     }
 }
