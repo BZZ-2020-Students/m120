@@ -32,17 +32,25 @@ public class View extends JFrame{
 
   private JList viewComponent;
   private JButton addItem;
+  private JButton savelist;
+  private JButton readlist;
   private JTextField inputValue;
-  private DefaultListModel<String> model;
+  private Model model;
+  private String filename = "list.ser";
   
   /**
   * Konstruktor
   */
-  public View(DefaultListModel<String> m){
+  public View(Model m){
     super("View-Komponente");
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //
     model = m;
+    if (!model.checkifFileExists(filename)) {
+      model.createFile(filename);
+    }
+    model.loadList(filename);
+
     //
     init();
     //
@@ -65,8 +73,40 @@ public class View extends JFrame{
         onAddItem();
       }
     });
+
+    addWindowListener(
+      new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+          super.windowClosing(e);
+          model.saveList(filename);
+        }
+      }
+    );
+
+//    savelist = new JButton("Save List");
+//    savelist.addActionListener(new ActionListener() {
+//      @Override
+//      public void actionPerformed(ActionEvent e) {
+//        onSaveList();
+//
+//      }
+//    });
+//    readlist = new JButton("Read List");
+//    readlist.addActionListener(new ActionListener() {
+//      @Override
+//      public void actionPerformed(ActionEvent e) {
+//        onReadList();
+//
+//      }
+//    });
+
     JPanel eastPanel = new JPanel();
+//    eastPanel.add(readlist,BorderLayout.WEST);
+//    eastPanel.add(savelist,BorderLayout.CENTER);
     eastPanel.add(addItem,BorderLayout.EAST);
+
+
     this.add(eastPanel,BorderLayout.SOUTH);
 
     inputValue = new JTextField();
@@ -91,6 +131,19 @@ public class View extends JFrame{
     pack();
     this.repaint();
     inputValue.requestFocus();
+    model.saveList(filename);
+  }
+
+  private void onSaveList(){
+
+
+    System.out.println("Save List");
+    model.saveList(filename);
+  }
+
+  private void onReadList(){
+    System.out.println("Read List");
+    model.loadList(filename);
   }
   
   
@@ -110,7 +163,7 @@ public class View extends JFrame{
       viewComponent.requestFocus();
     }
   }
-  
+
   /**
   * Main erzeugt zuerst ein Objekt des Daten-Model und 
   * danach die View.
@@ -118,7 +171,11 @@ public class View extends JFrame{
   */
   public static void main(String[] args){
     // do it
+
     Model model = new Model();
+
     View view = new View(model);
+
+
   }
 }
