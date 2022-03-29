@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Observable;
 
 /**
@@ -42,8 +40,11 @@ public class Transmitter extends Observable {
      */
     public static void main(String[] args) {
         Transmitter tx = new Transmitter();
-        //
-        // hier folgen die Empfänger-Objekte
+
+        int recNumber = 0;
+        Receiver rx1 = new Receiver(tx, recNumber++);
+        Receiver rx2 = new Receiver(tx, recNumber++);
+        Receiver rx3 = new Receiver(tx, recNumber);
     }
 
     private void init() {
@@ -63,16 +64,14 @@ public class Transmitter extends Observable {
         theWindow.getContentPane().add(inputPanel, BorderLayout.CENTER);
         theWindow.getContentPane().add(btnPanel, BorderLayout.SOUTH);
         // Einrichten der Controllers
-        btnSend.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                doSend();
-            }
-        });
+        btnSend.addActionListener(ae -> doSend());
     }
 
     private void doSend() {
-        // hier implementieren ie bitte die Methoden für
-        // den Observer.
-        // Mehr dazu in der API.
+        setChanged();
+        System.out.println(countObservers());
+        this.notifyObservers(theMessage.getText());
+        theMessage.setText("");
+        clearChanged();
     }
 }
