@@ -29,9 +29,10 @@ import java.awt.event.*;
 public class View extends JFrame{
 
   JList<String> viewComponent = new JList<>();
-  JButton add = new JButton("Add");
-  JTextField inputValue = new JTextField(5);
+  JButton addItem = new JButton("Add item");
+  JTextField inputValue;
   DefaultListModel<String> model;
+  JPanel buttonPanel = new JPanel(new BorderLayout());
   /* deklarieren Sie hier alle benötigten Grafik-Komponenten
   * - Liste        (muss viewComponent heissen)
   * - Schaltfläche (beliebiger Name)
@@ -65,8 +66,10 @@ public class View extends JFrame{
     *
     * do it
     */
-    
-    
+    setLayout(new BorderLayout());
+    viewComponent = new JList<>(model);
+    JScrollPane scrollPane = new JScrollPane(viewComponent);
+    add(scrollPane, BorderLayout.CENTER);
     /*
     * Erstellen Sie die Schaltfläche [add Item]. Legen Sie diese in einem
     * JPanel im Osten ab. Dieses Panel legen Sie dann im S�den des Frames ab.
@@ -75,7 +78,12 @@ public class View extends JFrame{
     *
     * do it
     */
-    
+
+    addItem.addActionListener(e -> {
+        onAddItem();
+    });
+    buttonPanel.add(addItem, BorderLayout.EAST);
+    add(buttonPanel, BorderLayout.SOUTH);
     
     /*
     * Erstellen Sie ein Textfeld f�r die Eingabe neuer Items.
@@ -86,7 +94,17 @@ public class View extends JFrame{
     * 
     * do it
     */
-    
+    inputValue =  new JTextField(5);
+    inputValue.setVisible(false);
+    add(inputValue, BorderLayout.NORTH);
+
+    inputValue.addKeyListener(new KeyAdapter() {
+      @Override
+      public void keyPressed(KeyEvent e) {
+          onEnter(e);
+      }
+    });
+
   }
   
   
@@ -116,7 +134,7 @@ public class View extends JFrame{
       this.repaint();
       // Hier dem Daten-Model den Wert des Textfeldes übergeben
       // do it
-      
+      model.addElement(inputValue.getText());
       //
       inputValue.setText("");
       viewComponent.requestFocus();
