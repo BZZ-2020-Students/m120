@@ -12,6 +12,6 @@ public class InputController extends KeyAdapter {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        
+
     }
 }
