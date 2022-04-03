@@ -1,10 +1,10 @@
-package aNeinszwei;
-
-import aLdreieins.DemoBtnGUI;
+package aNeinseins;
 
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 /**
   * Die Klasse Receiver stellt ein Fenster zur Verfügung, in welchem
@@ -42,9 +42,11 @@ public class Receiver extends JFrame implements Observer {
     private Observable theTransmitter;
 
     public Receiver(Observable tx){
+        recNumber++;
         tx.addObserver(this);
+        theTransmitter = tx;
 
-        recievergui = new JFrame("Empfänger");
+        recievergui = new JFrame("Empfänger " + recNumber);
         recievergui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         recievergui.setSize(300,200);
         //
@@ -69,14 +71,32 @@ public class Receiver extends JFrame implements Observer {
         recievergui.getContentPane().add(repanel, BorderLayout.CENTER);
         recievergui.getContentPane().add(btnpanel, BorderLayout.SOUTH);
 
+        btnAddObserver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onAdd();
+            }
+        });
+
+        btnRemoveObserver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onRemove();
+            }
+        });
+
     }
 
     private void onAdd(){
-
+        theTransmitter.addObserver(this);
+        btnRemoveObserver.setEnabled(true);
+        btnAddObserver.setEnabled(false);
     }
 
     private void onRemove(){
-
+        theTransmitter.deleteObserver(this);
+        btnRemoveObserver.setEnabled(false);
+        btnAddObserver.setEnabled(true);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package aNeinszwei;
+package aNeinseins;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,9 +77,7 @@ public class Transmitter extends Observable{
   */
   public static void main(String[] args){
     Transmitter tx = new Transmitter();
-
     Receiver rx1 = new Receiver(tx);
-
     Receiver rx2 = new Receiver(tx);
 
 
