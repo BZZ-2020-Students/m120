@@ -4,15 +4,15 @@ import java.util.Observable;
 
 public class IntegerModel extends Observable {
 
-    private int value = 0;
+    private int value;
 
     public IntegerModel(){
-
+        value = 0;
     }
 
     public void setValue(int value) {
         this.value = value;
         setChanged();
-        notifyObservers(value);
+        notifyObservers(this.value);
     }
 }

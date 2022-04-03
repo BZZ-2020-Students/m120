@@ -16,14 +16,14 @@ public class InputController extends KeyAdapter {
         model = m;
     }
         @Override
-        public void keyTyped (KeyEvent event){
-        if(event.getKeyCode() == KeyEvent.VK_ENTER)
-        try {
-            String srtVal = view.getText();
-            model.setValue(Integer.parseInt(srtVal));
-        }catch(Exception e)
-            {
-                JOptionPane.showMessageDialog(view, "Error");
+        public void keyTyped (KeyEvent event) {
+            if (event.getKeyChar() == KeyEvent.VK_ENTER) {
+                try {
+                    String srtVal = view.getText();
+                    model.setValue(Integer.parseInt(srtVal));
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(view, "Bitte geben Sie eine korrekte Zahl ein!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
 }
