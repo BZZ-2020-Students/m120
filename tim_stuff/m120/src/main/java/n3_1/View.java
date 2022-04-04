@@ -69,6 +69,9 @@ public class View extends JFrame {
                 System.exit(0);
             }
         });
+
+        // add zebra stripes
+        viewComponent.setDefaultRenderer(Object.class, new ZebraRenderer());
     }
 
     private void onAddItem() {

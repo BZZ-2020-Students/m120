@@ -2,7 +2,7 @@ package n3_1;
 
 import java.io.Serializable;
 
-public class DataClass implements Serializable, Comparable {
+public class DataClass implements Serializable, Comparable<DataClass> {
     private String name;
 
     public DataClass() {
@@ -21,7 +21,7 @@ public class DataClass implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return this.name.compareTo(((DataClass) o).getName());
+    public int compareTo(DataClass o) {
+        return this.name.compareTo(o.getName());
     }
 }
