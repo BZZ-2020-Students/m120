@@ -9,6 +9,8 @@ public class HEX_Output extends OutputView{
 
     @Override
     public void update(Observable o, Object arg) {
+        outValue.setText("HEX: " + Integer.toHexString((Integer) arg));
 
+        repaint();
     }
 }

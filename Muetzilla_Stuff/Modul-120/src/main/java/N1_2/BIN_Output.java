@@ -9,6 +9,8 @@ public class BIN_Output extends OutputView{
 
     @Override
     public void update(Observable o, Object arg) {
+        outValue.setText("BIN: " + Integer.toBinaryString((Integer) arg));
 
+        repaint();
     }
 }
