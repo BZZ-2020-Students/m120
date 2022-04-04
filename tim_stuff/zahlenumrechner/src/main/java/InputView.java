@@ -24,27 +24,25 @@ public class InputView extends JFrame {
         inputPanel.setLayout(new BorderLayout());
 
         inputField = new JTextField(10);
+        inputField.addKeyListener(new InputController(this, model));
         inputPanel.add(inputField, BorderLayout.CENTER);
-
-        JButton button = new JButton("Send");
-        button.addActionListener(e -> {
-            String text = inputField.getText();
-            if (text.length() > 0) {
-                model.setValue(Integer.parseInt(text));
-            }
-        });
-        inputPanel.add(button, BorderLayout.EAST);
 
         mainPanel.add(inputPanel, BorderLayout.NORTH);
 
         info = new JTextArea();
         info.setEditable(false);
+        info.setLineWrap(true);
         mainPanel.add(new JScrollPane(info), BorderLayout.CENTER);
 
         add(mainPanel);
+        setVisible(true);
     }
 
     public String getText() {
         return inputField.getText();
+    }
+
+    public void setText(String text) {
+        inputField.setText(text);
     }
 }
