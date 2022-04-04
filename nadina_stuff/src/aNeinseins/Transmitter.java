@@ -1,19 +1,20 @@
-package N1_1;
+package aNeinseins;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
 /**
- * Die Klasse Transmitter ermï¿½glicht 
- * a) das Versenden einer Mitteliung an beliebig viele Empfï¿½nger
- * b) das an- und abmelden von Empfï¿½nger
+ * Die Klasse Transmitter ermöglicht 
+ * a) das Versenden einer Mitteliung an beliebig viele Empfänger
+ * b) das an- und abmelden von Empfänger
  *
  * Die Kommunikation erfolgt anhand des Observer-Pattern. Dieses wird
- * in Java mit der Klasse Observable (fï¿½r das Subject) und dem Interface
- * Observer (fï¿½r den Observer) realisiert. Mehr Infos finden sich in der API.
+ * in Java mit der Klasse Observable (für das Subject) und dem Interface
+ * Observer (für den Observer) realisiert. Mehr Infos finden sich in der API.
  *
- * Bis auf die Ereignisverarbeitung beim [Senden] ist die Klasse vollstï¿½ndig
+ * Bis auf die Ereignisverarbeitung beim [Senden] ist die Klasse vollständig
  * implementiert.
  */
 
@@ -35,8 +36,8 @@ public class Transmitter extends Observable{
   
   private void init(){
     /*
-    * Einrichten des Benutzerfensters mit einem Textfeld fï¿½r die Eingabe der Meldung
-    * und der Senden-Schaltflï¿½che.
+    * Einrichten des Benutzerfensters mit einem Textfeld für die Eingabe der Meldung
+    * und der Senden-Schaltfläche.
     */
     JPanel inputPanel = new JPanel(new BorderLayout());
     inputPanel.add(new JLabel("Meldung: "), BorderLayout.WEST);
@@ -58,11 +59,15 @@ public class Transmitter extends Observable{
   }
   
   private void doSend(){
-    this.setChanged();
-    this.notifyObservers(theMessage.getText());
+    // hier implementieren ie bitte die Methoden für
+    // den Observer.
+    // Mehr dazu in der API.
+    String msq = theMessage.getText();
+    setChanged();
+    notifyObservers(msq);
     theMessage.setText("");
   }
-
+  
   
   /**
   * die main-Methode erzeugt ein Transmitter-Objekt und
@@ -74,7 +79,7 @@ public class Transmitter extends Observable{
     Transmitter tx = new Transmitter();
     Receiver rx1 = new Receiver(tx);
     Receiver rx2 = new Receiver(tx);
-    //
-    // hier folgen die Empfï¿½nger-Objekte
+
+
   }
 }
