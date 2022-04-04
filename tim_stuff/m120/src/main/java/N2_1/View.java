@@ -59,7 +59,7 @@ public class View extends JFrame {
             public void windowClosing(WindowEvent e) {
                 // save model to json file
                 try {
-                    FileOutputStream fos = new FileOutputStream("model.dat");
+                    FileOutputStream fos = new FileOutputStream("modelN2_1.dat");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(model.getData());
                     oos.close();

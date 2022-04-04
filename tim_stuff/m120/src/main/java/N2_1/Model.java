@@ -15,7 +15,7 @@ public class Model extends DefaultListModel<String> {
 
     public Model() {
         Vector<String> tempData = new Vector<>();
-        try (FileInputStream fis = new FileInputStream("model.dat")) {
+        try (FileInputStream fis = new FileInputStream("modelN2_1.dat")) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             tempData = (Vector<String>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {

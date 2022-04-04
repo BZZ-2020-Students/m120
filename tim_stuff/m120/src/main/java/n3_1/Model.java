@@ -12,7 +12,7 @@ public class Model extends AbstractTableModel implements Serializable {
 
     public Model() {
         Vector<DataClass> tempData = new Vector<>();
-        try (FileInputStream fis = new FileInputStream("model3_1.dat")) {
+        try (FileInputStream fis = new FileInputStream("modelN3_1.dat")) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             tempData = (Vector<DataClass>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
