@@ -14,7 +14,7 @@ public class View extends JFrame {
     @Serial
     private static final long serialVersionUID = 1659560662167244636L;
     private final Model model;
-    private JTable viewComponent;
+    private MyTable viewComponent;
     private JTextField inputValue;
 
     public View(Model m) {
@@ -33,7 +33,7 @@ public class View extends JFrame {
     }
 
     private void init() {
-        viewComponent = new JTable(model);
+        viewComponent = new MyTable(model);
         JScrollPane scroller = new JScrollPane(viewComponent);
         this.getContentPane().add(scroller, BorderLayout.CENTER);
         JButton addItem = new JButton("add Item");
@@ -69,9 +69,6 @@ public class View extends JFrame {
                 System.exit(0);
             }
         });
-
-        // add zebra stripes
-        viewComponent.setDefaultRenderer(Object.class, new ZebraRenderer());
     }
 
     private void onAddItem() {
