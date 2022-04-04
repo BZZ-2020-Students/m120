@@ -30,6 +30,7 @@ public class Model extends DefaultListModel<String> {
         Collections.sort(data);  //das sieht einfach sch�ner aus//
     }
 
+
     @Override
     /**
      * Liefert das Element, das durch arg0 indiziert wird.
@@ -61,4 +62,19 @@ public class Model extends DefaultListModel<String> {
         Collections.sort(data);
         fireIntervalAdded(this, data.size(), data.size());
     }
+
+    @Override
+    public String toString() {
+        String msg = "";
+        for(String s : data) {
+            msg += s +"\n";
+        }
+        return msg;
+    }
+
+    @Override
+   public void clear() {
+        data.clear();
+    }
+
 }
