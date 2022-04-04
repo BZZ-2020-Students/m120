@@ -52,6 +52,9 @@ public class TableView extends JFrame {
             //
             System.out.println( ((JTextField)table.getEditorComponent()).getText());
           }
+          table.setDefaultEditor(Object.class, new DefaultCellEditor(cellEditor));
+
+          UIManager.getLookAndFeelDefaults().put("Table.alternateRowColor", new Color(144, 144, 144));
         }
       } );
    }

@@ -16,18 +16,12 @@ import javax.swing.*;
  */
 public class Model extends DefaultListModel<String>{
 
-  
+
+
   private Vector<String> data;
   
-  public Model(){
-    data = new Vector<String>();
-    data.add("Skifahren");
-    data.add("Schwimmen");
-    data.add("Fussball");
-    data.add("Segeln");
-    data.add("Cart Rennen");
-    data.add("Volleyball");
-    data.add("Biken");
+  public Model(Vector<String> hobbys){
+    this.data = hobbys;
     Collections.sort(data);  //das sieht einfach sch�ner aus//
   }
 
@@ -60,4 +54,9 @@ public class Model extends DefaultListModel<String>{
     Collections.sort(data);
     fireIntervalAdded(this,0,data.size());
   }
+
+  public Vector<String> getData() {
+    return data;
+  }
+
 }
