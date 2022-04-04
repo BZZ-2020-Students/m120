@@ -5,18 +5,27 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
-public class ColorTable implements TableCellRenderer {
+public class ColorTable extends DefaultTableCellRenderer {
 
-    public static final DefaultTableCellRenderer DEFAULT_RENDERER = new DefaultTableCellRenderer();
+    private static final Color STRIPE = new Color(0.929f, 0.953f, 0.996f);
+    private static final Color WHITE = UIManager.getColor("Table.background");
 
-    @Override
+
+    public ColorTable() {
+        setOpaque(true); //MUST do this for background to show up.
+    }
+
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        Component c = DEFAULT_RENDERER.getTableCellRendererComponent(table,value, isSelected, hasFocus, row, column);
-        if (row % 2 == 0) {
-            c.setBackground(Color.gray);
-        } else {
-            c.setBackground(Color.white);
+        JComponent c = (JComponent) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+        if (!isSelected) {
+            if (row % 2 == 0) {
+                c.setBackground(WHITE);
+            } else {
+                c.setBackground(STRIPE);
+            }
         }
+
         return c;
     }
 }

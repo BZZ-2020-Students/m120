@@ -35,7 +35,7 @@ public class TableView extends JFrame {
     private void init(){
       table = new JTable(model);
       ColorTable ct = new ColorTable();
-      ct.getTableCellRendererComponent(table,this,false, false, model.getColumnCount(), model.getRowCount());
+      ct.getTableCellRendererComponent(table,model,true, false, table.getColumnCount(), table.getRowCount());
       add(new JScrollPane(table));
 
       button = new JButton("Add");
