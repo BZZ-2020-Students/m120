@@ -34,6 +34,8 @@ public class TableView extends JFrame {
 
     private void init(){
       table = new JTable(model);
+      ColorTable ct = new ColorTable();
+      ct.getTableCellRendererComponent(table,this,false, false, model.getColumnCount(), model.getRowCount());
       add(new JScrollPane(table));
 
       button = new JButton("Add");
@@ -52,9 +54,6 @@ public class TableView extends JFrame {
             //
             System.out.println( ((JTextField)table.getEditorComponent()).getText());
           }
-          table.setDefaultEditor(Object.class, new DefaultCellEditor(cellEditor));
-
-          UIManager.getLookAndFeelDefaults().put("Table.alternateRowColor", new Color(144, 144, 144));
         }
       } );
    }
