@@ -14,7 +14,7 @@ public class View extends JFrame {
     @Serial
     private static final long serialVersionUID = 1659560662167244636L;
     private final Model model;
-    private JList<String> viewComponent;
+    private JTable viewComponent;
     private JTextField inputValue;
 
     public View(Model m) {
@@ -33,7 +33,7 @@ public class View extends JFrame {
     }
 
     private void init() {
-        viewComponent = new JList<>(model);
+        viewComponent = new JTable(model);
         JScrollPane scroller = new JScrollPane(viewComponent);
         this.getContentPane().add(scroller, BorderLayout.CENTER);
         JButton addItem = new JButton("add Item");
@@ -59,7 +59,7 @@ public class View extends JFrame {
             public void windowClosing(WindowEvent e) {
                 // save model to json file
                 try {
-                    FileOutputStream fos = new FileOutputStream("model.dat");
+                    FileOutputStream fos = new FileOutputStream("model3_1.dat");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(model.getData());
                     oos.close();
@@ -85,7 +85,7 @@ public class View extends JFrame {
             pack();
             this.repaint();
             viewComponent.requestFocus();
-            model.addElement(inputValue.getText());
+            model.addRow(new DataClass(inputValue.getText()));
             inputValue.setText("");
         }
     }
