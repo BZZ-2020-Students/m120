@@ -1,4 +1,4 @@
-package N2_1;
+package n3_1;
 
 import javax.swing.*;
 import java.io.FileInputStream;
