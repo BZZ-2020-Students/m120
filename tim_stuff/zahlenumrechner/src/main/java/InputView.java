@@ -32,6 +32,7 @@ public class InputView extends JFrame {
         info = new JTextArea();
         info.setEditable(false);
         info.setLineWrap(true);
+        info.setText("Geben Sie hier eine Zahl ein. Sie wird in den Ausgabefenstern \nin Hex, Bin und Dec ausgegeben.\nBestätigen Sie die Eingabe mit ENTER");
         mainPanel.add(new JScrollPane(info), BorderLayout.CENTER);
 
         add(mainPanel);

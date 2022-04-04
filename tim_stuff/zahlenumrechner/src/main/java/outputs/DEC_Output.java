@@ -10,7 +10,7 @@ public class DEC_Output extends OutputView {
 
     @Override
     public void update(Observable o, Object arg) {
-        outValue.setText(String.valueOf(arg));
+        outValue.setText("DEC: " + arg);
 
         repaint();
     }

@@ -12,6 +12,19 @@ public class InputController extends KeyAdapter {
     }
 
     @Override
+    public void keyReleased(KeyEvent e) {
+        // check if number
+        char c = e.getKeyChar();
+        String text = view.getText();
+        if (!Character.isDigit(c)) {
+            if (text.length() > 0) {
+                text = text.substring(0, text.length() - 1);
+                view.setText(text);
+            }
+        }
+    }
+
+    @Override
     public void keyTyped(KeyEvent e) {
         char c = e.getKeyChar();
         // if enter
