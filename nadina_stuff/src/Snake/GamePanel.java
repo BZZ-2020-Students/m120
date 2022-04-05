@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     }
 
+
     public void startGame() { // methode
         newApple();
         running = true;
@@ -52,8 +53,9 @@ public class GamePanel extends JPanel implements ActionListener {
     public void draw(Graphics g) {
         if (running) {
             for (int i = 0; i < SCREEN_HEIGHT / UNIT_SIZE; i++) {
-                g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, SCREEN_HEIGHT); // ��
-                g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE); // __
+                g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, SCREEN_HEIGHT);
+                g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
+
             }
             g.setColor(Color.red);
             g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
@@ -106,7 +108,6 @@ public class GamePanel extends JPanel implements ActionListener {
             bodyParts++;
             appleEaten++;
             newApple();
-
         }
     }
 
@@ -151,7 +152,14 @@ public class GamePanel extends JPanel implements ActionListener {
         g.setFont(new Font("Bauhaus 93", Font.BOLD, 40));
         FontMetrics metrics = getFontMetrics(g.getFont());
         g.drawString("Score: " + appleEaten, (SCREEN_WIDTH - metrics.stringWidth("Score: " + appleEaten)) / 2, g.getFont().getSize());
+        //Restart Button
+
     }
+
+    public void restartBtn(Graphics g){
+
+    }
+    // TODO close or restart Button at the end of the game
 
     @Override
     public void actionPerformed(ActionEvent e) {
