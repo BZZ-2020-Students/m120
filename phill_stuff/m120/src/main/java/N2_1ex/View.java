@@ -1,11 +1,8 @@
-package N2_1;
+package N2_1ex;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  * Die Klasse View stellt eine Graphik-Komponente gemäss MVC-Pattern bereit.
@@ -32,19 +29,15 @@ import java.awt.event.KeyEvent;
  */
 public class View extends JFrame{
   
-  /* deklarieren Sie hier alle benötigten Graphik-Komponenten
-  * - Liste        (muss viewComponent heissen)
-  * - Schaltfläche (beliebiger Name)
-  * - Textfeld     (muss inputValue heissen)
-  * sowie die Referenz (muss model heissen) zum Daten-Model.
-  *
-  * do it
-  */
+
   private JList viewComponent;
-  private JButton button;
+  private JButton addItem;
+  private JButton savelist;
+  private JButton readlist;
   private JTextField inputValue;
   private Model model;
-
+  private String filename = "list.ser";
+  
   /**
   * Konstruktor
   */
@@ -53,6 +46,11 @@ public class View extends JFrame{
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //
     model = m;
+    if (!model.checkifFileExists(filename)) {
+      model.createFile(filename);
+    }
+    model.loadList(filename);
+
     //
     init();
     //
@@ -62,64 +60,64 @@ public class View extends JFrame{
   
   
   private void init(){
-    /*
-    * Erstellen Sie die Liste. Legen Sie diese in einer JScrollPane ab. 
-    * Diese platzieren Sie dann im Zentrum des Frames.
-    *
-    * do it
-    */
-    viewComponent = new JList<String>(model);
-    JScrollPane scrollPane = new JScrollPane(viewComponent);
 
-    this.add(scrollPane,BorderLayout.CENTER);
-    
-    /*
-    * Erstellen Sie die Schaltfläche [add Item]. Legen Sie diese in einem 
-    * JPanel im Osten ab. Dieses Panel legen Sie dann im Süden des Frames ab.
-    * Fügen Sie einen ActionListener als anonyme Klasse zu. 
-    * Er ruft die onAddItem()-Methode auf.
-    *
-    * do it
-    */
-    JPanel leftpanel = new JPanel();
-    button = new JButton("add Item");
-    button.addActionListener(new ActionListener() {
+    viewComponent = new JList<String>(model);
+    JScrollPane scroll = new JScrollPane(viewComponent);
+
+    this.add(scroll,BorderLayout.CENTER);
+
+    addItem = new JButton("Add Item");
+    addItem.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         onAddItem();
       }
     });
 
+    addWindowListener(
+      new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+          super.windowClosing(e);
+          model.saveList(filename);
+        }
+      }
+    );
 
-    leftpanel.add(button,BorderLayout.EAST);
+//    savelist = new JButton("Save List");
+//    savelist.addActionListener(new ActionListener() {
+//      @Override
+//      public void actionPerformed(ActionEvent e) {
+//        onSaveList();
+//
+//      }
+//    });
+//    readlist = new JButton("Read List");
+//    readlist.addActionListener(new ActionListener() {
+//      @Override
+//      public void actionPerformed(ActionEvent e) {
+//        onReadList();
+//
+//      }
+//    });
 
-    this.add(leftpanel,BorderLayout.SOUTH);
+    JPanel eastPanel = new JPanel();
+//    eastPanel.add(readlist,BorderLayout.WEST);
+//    eastPanel.add(savelist,BorderLayout.CENTER);
+    eastPanel.add(addItem,BorderLayout.EAST);
 
 
+    this.add(eastPanel,BorderLayout.SOUTH);
 
-    
-    /*
-    * Erstellen Sie ein Textfeld für die Eingabe neuer Items.
-    * Das Textfeld ist zu Beginn unsichtbar. Es wird erst über [add Item] eingeblendet.
-    * Das Textfeld legen Sie im Norden des Frames ab.
-    * Fügen Sie einen KeyAdapter als anonyme Klasse  zu. 
-    * Er ruft die onEnter()-Methode auf.
-    * 
-    * do it
-    */
     inputValue = new JTextField();
     inputValue.addKeyListener(new KeyAdapter() {
       @Override
       public void keyTyped(KeyEvent e) {
         onEnter(e);
       }
-
-
     });
     inputValue.setVisible(false);
-
     this.add(inputValue,BorderLayout.NORTH);
-
   }
   
   
@@ -133,6 +131,19 @@ public class View extends JFrame{
     pack();
     this.repaint();
     inputValue.requestFocus();
+    model.saveList(filename);
+  }
+
+  private void onSaveList(){
+
+
+    System.out.println("Save List");
+    model.saveList(filename);
+  }
+
+  private void onReadList(){
+    System.out.println("Read List");
+    model.loadList(filename);
   }
   
   
@@ -147,23 +158,24 @@ public class View extends JFrame{
       inputValue.setVisible(false);
       pack();
       this.repaint();
-      // Hier dem Daten-Model den Wert des Textfeldes übergeben
-      // do it
       model.addElement(inputValue.getText());
-      //
       inputValue.setText("");
       viewComponent.requestFocus();
     }
   }
-  
+
   /**
   * Main erzeugt zuerst ein Objekt des Daten-Model und 
   * danach die View.
   * @param args
   */
   public static void main(String[] args){
+    // do it
+
     Model model = new Model();
+
     View view = new View(model);
-    
+
+
   }
 }
