@@ -56,6 +56,7 @@ public class Receiver extends JFrame implements Observer {
     }
 
     private void init(){
+        // Inhalt der Empfänger Panels
         JPanel repanel = new JPanel(new BorderLayout());
         messageOut = new JTextArea();
         messageOut.setLineWrap(true);

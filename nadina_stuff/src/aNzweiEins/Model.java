@@ -1,4 +1,4 @@
-package aNzweieins;
+package aNzweiEins;
 
 import java.util.*;
 
@@ -8,10 +8,10 @@ import javax.swing.*;
  * Das Daten-Model representiert eine Vielzahl von Strings (z.B. Hobbies)
  * Die Datenwerte werden in einem Vector gehalten.
  * 
- * Für die Kommunikation mit der View werden die notwendigen Methoden aus
- * DefaultListModel überschrieben.
+ * Fï¿½r die Kommunikation mit der MVCView werden die notwendigen Methoden aus
+ * DefaultListModel ï¿½berschrieben.
  * 
- * @author René Probst
+ * @author Renï¿½ Probst
  *
  */
 public class Model extends DefaultListModel<String>{
@@ -28,7 +28,7 @@ public class Model extends DefaultListModel<String>{
     data.add("Cart Rennen");
     data.add("Volleyball");
     data.add("Biken");
-    Collections.sort(data);  //das sieht einfach schöner aus//
+    Collections.sort(data);  //das sieht einfach schï¿½ner aus//
   }
 
   @Override
@@ -36,6 +36,8 @@ public class Model extends DefaultListModel<String>{
    * Liefert das Element, das durch arg0 indiziert wird.
    */
   public String getElementAt(int arg0) {
+    // TODO Auto-generated method stub
+    // do it
     return data.get(arg0);
   }
 
@@ -44,19 +46,22 @@ public class Model extends DefaultListModel<String>{
    * Liefert die Anzahl der vorhandenen Datenwerte
    */
   public int getSize() {
+    // TODO Auto-generated method stub
+    // do it
+
     return data.size();
   }
   
   @Override
   /**
-   * Fügt den neuen Wert dem Vector zu und sortiert die Liste.
-   * Danach muss die View-Komponente über die Änderung der Daten
+   * Fï¿½gt den neuen Wert dem Vector zu und sortiert die Liste.
+   * Danach muss die MVCView-Komponente ï¿½ber die ï¿½nderung der Daten
    * informiert werden --> siehe dazu die API von DefaultListModel
    */
   public void addElement(String value){
+    // do it
     data.add(value);
     Collections.sort(data);
     this.fireIntervalAdded(this,0, data.size());
-    
   }
 }

@@ -79,6 +79,7 @@ public class Transmitter extends Observable{
     Transmitter tx = new Transmitter();
     Receiver rx1 = new Receiver(tx);
     Receiver rx2 = new Receiver(tx);
+    Receiver rx3 = new Receiver(tx);
 
 
   }

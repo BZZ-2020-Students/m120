@@ -22,7 +22,7 @@ public class Login extends JFrame implements ActionListener {
 
      // Panels
      JPanel centerpanel = new JPanel(new GridLayout(3,1));
-     JPanel loginpanel = new JPanel(new GridLayout(2,2,10,3));
+     JPanel loginpanel = new JPanel(new GridLayout(2,2,15,3));
      JPanel buttonpanel = new JPanel();
 
     Login(){
@@ -51,13 +51,14 @@ public class Login extends JFrame implements ActionListener {
                checkLogin();
            }
        });
+       buttonpanel.setBorder(BorderFactory.createEmptyBorder(15,0,0,0));
        buttonpanel.add(loginbtn);
 
 
         //Error MSG
         errormsg.setVisible(true);
         errormsg.setHorizontalAlignment(JLabel.CENTER);
-        errormsg.setBorder(BorderFactory.createEmptyBorder(0,0,30,0));
+        errormsg.setBorder(BorderFactory.createEmptyBorder(0,0,20,0));
 
         // Centerpanel
         centerpanel.add(loginpanel);
