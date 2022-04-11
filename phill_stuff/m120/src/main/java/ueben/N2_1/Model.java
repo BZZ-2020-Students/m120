@@ -1,8 +1,8 @@
-package N2_1;
+package ueben.N2_1;
+
+import java.util.*;
 
 import javax.swing.*;
-import java.util.Collections;
-import java.util.Vector;
 
 /**
  * Das Daten-Model representiert eine Vielzahl von Strings (z.B. Hobbies)

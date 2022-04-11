@@ -1,11 +1,10 @@
-package N2_1;
+package ueben.N2_1;
+
+import ueben.N2_1.Model;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  * Die Klasse View stellt eine Graphik-Komponente gemäss MVC-Pattern bereit.
