@@ -52,6 +52,7 @@ public class InputGUI extends JFrame {
 
 
         add(rootPanel);
+        setTitle("Administration - FlyTop");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
