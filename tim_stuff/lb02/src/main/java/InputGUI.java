@@ -26,6 +26,7 @@ public class InputGUI extends JFrame {
             destinationInput.setText("");
             System.out.println(model);
         }
+        destinationInput.requestFocus();
     }
 
     private void init() {
