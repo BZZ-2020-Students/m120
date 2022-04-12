@@ -7,7 +7,6 @@
 public class App {
     public static void main(String[] args) {
         DestinationModel destinationModel = new DestinationModel();
-
-        System.out.println(destinationModel);
+        InputGUI inputGUI = new InputGUI(destinationModel);
     }
 }
