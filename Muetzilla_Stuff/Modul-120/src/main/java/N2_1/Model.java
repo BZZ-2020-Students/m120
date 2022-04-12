@@ -24,7 +24,6 @@ public class Model extends DefaultListModel<String>{
     this.data = hobbys;
     Collections.sort(data);  //das sieht einfach sch�ner aus//
   }
-
   @Override
   /**
    * Liefert das Element, das durch arg0 indiziert wird.
