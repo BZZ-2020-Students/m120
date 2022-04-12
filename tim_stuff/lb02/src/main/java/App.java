@@ -8,5 +8,6 @@ public class App {
     public static void main(String[] args) {
         DestinationModel destinationModel = new DestinationModel();
         InputGUI inputGUI = new InputGUI(destinationModel);
+        UserGUI userGUI = new UserGUI(destinationModel);
     }
 }
