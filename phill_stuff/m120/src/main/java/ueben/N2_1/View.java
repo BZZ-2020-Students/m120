@@ -7,33 +7,33 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Die Klasse View stellt eine Graphik-Komponente gemäss MVC-Pattern bereit.
- * Es handelt sich um eine JList. Die Daten für die Liste werden aus der Model-Klasse
+ * Die Klasse View stellt eine Graphik-Komponente gemï¿½ss MVC-Pattern bereit.
+ * Es handelt sich um eine JList. Die Daten fï¿½r die Liste werden aus der Model-Klasse
  * Model gelesen. Dazu implementiert die Model-Klasse das Interface ListModel bzw.
  * die Komfort-Klasse DefaultListModel.
  * Hier wird auf ein entsprechendes Objekt referenziert.
  * 
- * Die JList kann zur Laufzeit um weitere Einträge (Item) erweitert werden. Dazu 
- * dient eine Schaltfläche [add Item]. Diese blendet dann oberhalb der Liste
+ * Die JList kann zur Laufzeit um weitere Eintrï¿½ge (Item) erweitert werden. Dazu 
+ * dient eine Schaltflï¿½che [add Item]. Diese blendet dann oberhalb der Liste
  * ein Textfeld ein, in welchem die Eingabe vorgenommen und mit der ENTER-Taste
- * bestätigt wird.
- * Der Eintrag wird dann dem Model übergeben (über die definierte Schnittstelle von
+ * bestï¿½tigt wird.
+ * Der Eintrag wird dann dem Model ï¿½bergeben (ï¿½ber die definierte Schnittstelle von
  * DefaultListModel). 
  * Danach wird die Eingabe wieder ausgeblendet.
  * 
  * Mittels MVC-Mechanismus wird dann die Liste um den neuen Wert erweitert.
  * Die Contoll-Komponenten sind hier als anonyme Klassen in der View integriert.
- * Der ActionListener steuert dabei die Kommunikation mit der View, während 
+ * Der ActionListener steuert dabei die Kommunikation mit der View, wï¿½hrend 
  * der KeyListener das Model mit neuen Daten versorgt.
  * 
- * @author René Probst
+ * @author Renï¿½ Probst
  *
  */
 public class View extends JFrame{
   
-  /* deklarieren Sie hier alle benötigten Graphik-Komponenten
+  /* deklarieren Sie hier alle benï¿½tigten Graphik-Komponenten
   * - Liste        (muss viewComponent heissen)
-  * - Schaltfläche (beliebiger Name)
+  * - Schaltflï¿½che (beliebiger Name)
   * - Textfeld     (muss inputValue heissen)
   * sowie die Referenz (muss model heissen) zum Daten-Model.
   *
@@ -73,9 +73,9 @@ public class View extends JFrame{
     this.add(scrollPane,BorderLayout.CENTER);
     
     /*
-    * Erstellen Sie die Schaltfläche [add Item]. Legen Sie diese in einem 
-    * JPanel im Osten ab. Dieses Panel legen Sie dann im Süden des Frames ab.
-    * Fügen Sie einen ActionListener als anonyme Klasse zu. 
+    * Erstellen Sie die Schaltflï¿½che [add Item]. Legen Sie diese in einem 
+    * JPanel im Osten ab. Dieses Panel legen Sie dann im Sï¿½den des Frames ab.
+    * Fï¿½gen Sie einen ActionListener als anonyme Klasse zu. 
     * Er ruft die onAddItem()-Methode auf.
     *
     * do it
@@ -98,10 +98,10 @@ public class View extends JFrame{
 
     
     /*
-    * Erstellen Sie ein Textfeld für die Eingabe neuer Items.
-    * Das Textfeld ist zu Beginn unsichtbar. Es wird erst über [add Item] eingeblendet.
+    * Erstellen Sie ein Textfeld fï¿½r die Eingabe neuer Items.
+    * Das Textfeld ist zu Beginn unsichtbar. Es wird erst ï¿½ber [add Item] eingeblendet.
     * Das Textfeld legen Sie im Norden des Frames ab.
-    * Fügen Sie einen KeyAdapter als anonyme Klasse  zu. 
+    * Fï¿½gen Sie einen KeyAdapter als anonyme Klasse  zu. 
     * Er ruft die onEnter()-Methode auf.
     * 
     * do it
@@ -123,8 +123,8 @@ public class View extends JFrame{
   
   
   /**
-  * Die Methode wird beim Klicken auf die Schaltfläche [add Item] aufgerufen.
-  * Sie blendet das Textfeld ein und setzt den Fokus für die Werteingabe im 
+  * Die Methode wird beim Klicken auf die Schaltflï¿½che [add Item] aufgerufen.
+  * Sie blendet das Textfeld ein und setzt den Fokus fï¿½r die Werteingabe im 
   * Textfeld.
   */
   private void onAddItem(){
@@ -136,9 +136,9 @@ public class View extends JFrame{
   
   
   /**
-  * Die Methode prüft das eingegeben Zeichen auf ENTER.
+  * Die Methode prï¿½ft das eingegeben Zeichen auf ENTER.
   * Bei ENTER wird das Textfeld wieder ausgeblendet und der Fokus auf die Liste gesetzt.
-  * Nun wird dem Datenmodel der neue Wert übermittelt und danach der Wert gelöscht.
+  * Nun wird dem Datenmodel der neue Wert ï¿½bermittelt und danach der Wert gelï¿½scht.
   * @param event
   */
   private void onEnter(KeyEvent event){
@@ -146,7 +146,7 @@ public class View extends JFrame{
       inputValue.setVisible(false);
       pack();
       this.repaint();
-      // Hier dem Daten-Model den Wert des Textfeldes übergeben
+      // Hier dem Daten-Model den Wert des Textfeldes ï¿½bergeben
       // do it
       model.addElement(inputValue.getText());
       //
